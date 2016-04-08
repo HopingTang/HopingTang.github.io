@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Hoping Tang Blog
+title: Hoping Tang's thoughts, stories and ideas.
 email: wan52390010@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This is Hoping Tang's Blog.
@@ -14,6 +14,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://hopingtang.github.io/" # the base hostname & protocol for your site
 twitter_username: Hoping_Tang
 github_username:  HopingTang
+facebook_username:  HopingTang
 
 # Build settings
 markdown: redcarpet
