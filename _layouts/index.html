@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+  <link rel="stylesheet" href="{{ "/css/index.css" | prepend: site.baseurl }}">
+  <script src="{{"/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+  <script type="text/javascript" src="{{"/js/index.js" | prepend: site.baseurl }}"></script>
+  
+  <body>
+
+    {% include index_header.html %}
+
+    <div id="content" class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

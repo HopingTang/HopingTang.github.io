@@ -1,0 +1,182 @@
+.icon-arrow:before {
+    content: "V";
+}
+
+/* Hides shit */
+.hidden {
+    text-indent: -9999px;
+    visibility: hidden;
+    display: none;
+}
+
+/* Centres vertically yo. (IE8+) */
+.vertical {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Wraps the main content & footer */
+.site-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100%;
+    background: #fff;
+    -webkit-transition: -webkit-transform 0.5s ease;
+            transition: transform 0.5s ease;
+}
+
+/* Create a bouncing scroll-down arrow on homepage with cover image */
+.scroll-down {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    bottom: 45px;
+    left: 50%;
+    margin-left: -16px;
+    width: 34px;
+    height: 34px;
+    font-size: 34px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    -webkit-animation: bounce 4s 2s infinite;
+    animation: bounce 4s 2s infinite;
+}
+
+/* Stop it bouncing and increase contrast when hovered */
+.scroll-down:hover {
+    color: #fff;
+    -webkit-animation: none;
+    animation: none;
+}
+
+.main-header {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 5rem;
+    text-align: center;
+    background: #222 no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.page-title {
+    margin: 10px 0 10px 0;
+    font-size: 5rem;
+    letter-spacing: -1px;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+}
+
+.page-description {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.5em;
+    font-weight: 400;
+    font-family: "Merriweather", serif;
+    letter-spacing: 0.01rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.site-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    border: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 100%);
+    display: inline-block;
+    float: right;
+    line-height: 56px;
+}
+
+.site-nav .page-link {
+    color: #fff;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .main-header {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: auto;
+        min-height: 240px;
+        height: 60vh;
+        padding: 15% 0;
+    }
+
+    .scroll-down,
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+/* Used to fade in title/desc on the home page */
+@-webkit-keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+/* Used to bounce .scroll-down on home page */
+@-webkit-keyframes bounce {
+    0%, 10%, 25%, 40%, 50% {
+        -webkit-transform: translateY(0); 
+                transform: translateY(0);
+    }
+    20% {
+        -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+    }
+    30% {
+        -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
+    }
+}
+
+
+/* ==========================================================================
+   End of file. Animations should be the last thing here. Do not add stuff
+   below this point, or it will probably fuck everything up.
+   ========================================================================== */
