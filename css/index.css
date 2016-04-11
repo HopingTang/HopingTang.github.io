@@ -1,3 +1,8 @@
+.disqus-comment-count {
+    color: #3f4549;    
+    font-size: small;
+}
+
 .icon-arrow:before {
     content: "V";
 }
