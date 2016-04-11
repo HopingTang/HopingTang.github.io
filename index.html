@@ -14,8 +14,7 @@ layout: index
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
-        <a href="{{ site.url }}{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.id }}"></a>
-        <span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span>
+        <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.id }}"></a>
       </li>
     {% endfor %}
   </ul>
