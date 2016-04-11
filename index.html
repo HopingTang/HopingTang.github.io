@@ -14,6 +14,7 @@ layout: index
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+        <a href="https://hopingtang.github.io{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.id }}"></a>
       </li>
     {% endfor %}
   </ul>
