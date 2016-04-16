@@ -3,7 +3,7 @@ layout: post
 title: "Test"
 date:   2016-04-07 09:23:22 +0800
 ---
-
+<!-- excerpt -->
 #Test LaTeX  
 $$ a^2 + b^2 = c^2 $$  
 $$ \mathbf{X}\_{i, j} = \mathbf{A} \mathbf{B}^\mathsf{T} $$

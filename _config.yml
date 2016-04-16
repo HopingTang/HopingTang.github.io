@@ -3,8 +3,11 @@ title: Hoping Tang
 email: wan52390010@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Thoughts, stories and ideas.
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://hopingtang.github.io/" # the base hostname & protocol for your site
+
+excerpt_separator: <!-- excerpt -->
 twitter_username: Hoping_Tang
 github_username:  HopingTang
 facebook_username:  HopingTang

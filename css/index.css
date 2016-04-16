@@ -69,7 +69,7 @@
 
 .page-title {
     margin: 10px 0 10px 0;
-    font-size: 4rem;
+    font-size: 7vw;
     letter-spacing: -1px;
     font-weight: 700;
     font-family: "Open Sans", sans-serif;
@@ -78,7 +78,7 @@
 
 .page-description {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 3vw;
     line-height: 1.5em;
     font-weight: 400;
     font-family: "Merriweather", serif;

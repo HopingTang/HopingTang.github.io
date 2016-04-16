@@ -15,6 +15,11 @@ layout: index
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
         <span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span>
+        
+        <div class="post-excerpt">
+        {{ post.excerpt | strip_html }}
+        </div>        
+
       </li>
     {% endfor %}
   </ul>
