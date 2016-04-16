@@ -13,8 +13,8 @@ layout: index
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span>
         </h2>
+        <span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span>
       </li>
     {% endfor %}
   </ul>
