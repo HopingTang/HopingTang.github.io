@@ -17,4 +17,4 @@ exclude:
   - LICENSE
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
