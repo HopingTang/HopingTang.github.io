@@ -5,11 +5,11 @@ title: "OpenCV 3.1.0 installation error note"
 
 I'm going to install the OpenCV 3.1.0 contrib module in my ubuntu 15.10 laptop, so I have to build the entire OpenCV lib again.
 
-With the brave that I hava sussecced many times, I just git clone the main tree on github, [OpenCV](https://github.com/Itseez/opencv) and [OpenCV contrib](https://github.com/Itseez/opencv_contrib).
-
-After a quite ccmake and cmake config, I began to build. `make -j4`
+With the brave that I hava sussecced many times, I just git clone the main tree on github, [OpenCV](https://github.com/Itseez/opencv) and [OpenCV contrib](https://github.com/Itseez/opencv_contrib). After a quite ccmake and cmake config, I began to build. `make -j4`
 
 The error occurred.
+
+<!-- excerpt -->
 
 ```
 [ 54%] Building CXX object modules/videoio/CMakeFiles/opencv_videoio.dir/src/cap_gphoto2.cpp.o
