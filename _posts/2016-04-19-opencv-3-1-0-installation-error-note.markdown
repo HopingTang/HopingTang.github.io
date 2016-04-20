@@ -5,7 +5,7 @@ title: "OpenCV 3.1.0 installation error note"
 
 I'm going to install the OpenCV 3.1.0 contrib module in my ubuntu 15.10 laptop, so I have to build the entire OpenCV lib again.
 
-With the brave that I hava sussecced many times, I just git clone the main tree on github, [OpenCV](https://github.com/Itseez/opencv) and [OpenCV contrib](https://github.com/Itseez/opencv_contrib). After a quite ccmake and cmake config, I began to build. `make -j4`
+With the bravery that I have sussecced many times, I just git clone the main tree on github, [OpenCV](https://github.com/Itseez/opencv) and [OpenCV contrib](https://github.com/Itseez/opencv_contrib). After a quick ccmake and cmake config, I began to build. `make -j4`
 
 The error occurred.
 
@@ -23,7 +23,7 @@ In file included from /usr/include/gphoto2/gphoto2-abilities-list.h:28:0,
                  from Documents/opencv/modules/videoio/src/cap_gphoto2.cpp:32:
 ```
 
-invalid conversion? I thought that the reason might be that my gphoto2 is incompatible to OpenCV's. Then I do a quite search and find the [same problem in StackOverflow](https://stackoverflow.com/questions/33020197/open-cv-build-error)
+invalid conversion? I thought that the reason might be that my gphoto2 is incompatible to OpenCV's. Then I do a quick search and find the [same problem in StackOverflow](https://stackoverflow.com/questions/33020197/open-cv-build-error)
 
 So I remove `gphoto2-2.6` and follow the answer which prove my guess and install `libgphoto2-2.5.7` and `gphoto2-2.5.6` from source.
 
