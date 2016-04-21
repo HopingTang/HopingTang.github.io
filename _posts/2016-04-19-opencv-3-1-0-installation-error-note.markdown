@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenCV 3.1.0 installation error note"
+title: "OpenCV 3.1.0 installation error note (fixed)"
 ---
 
 I'm going to install the OpenCV 3.1.0 contrib module in my ubuntu 15.10 laptop, so I have to build the entire OpenCV lib again.
@@ -37,4 +37,17 @@ collect2: error: ld returned 1 exit status
 
 I want to have a commment on the solusion on StackOverflow, but I have not enough reputation to do so.
 
-I'm now still finding the solusion... Maybe I should open a issue for this error in opencv repo...
+---
+
+...
+
+After one day, I have another try.
+
+I use `dpkg --get-selections | grep gphoto` to find out what I have installed related to gphoto: 
+
+`libgphoto2-6:amd64             install`
+
+`libgphoto2-6` is still here after I remove `gphoto2-2.6` and install `gphoto2-2.5.7`. So, I remove all gphoto and follow the solution again. 
+After gphoto installation I use `sudo ldconfig -v` instead. 
+
+And I am now successfully build openCV 3.1.0 ~
