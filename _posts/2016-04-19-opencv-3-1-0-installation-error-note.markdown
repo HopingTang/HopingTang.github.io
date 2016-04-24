@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenCV 3.1.0 installation error note (fixed)"
+title: "OpenCV 3.1.0 Installation Error Note (Fixed)"
 ---
 
 I'm going to install the OpenCV 3.1.0 contrib module in my ubuntu 15.10 laptop, so I have to build the entire OpenCV lib again.
