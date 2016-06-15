@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Notes for MultiView Geometry in CV"
+title: "Notes for MultiView Geometry in CV Chap 1"
 date: 2016-06-13 22:00:00 +0800
 ---
 
-# Notes for Multiple View Geometry in Computer Vision
+# Notes for Chapter 1 of Multiple View Geometry in Computer Vision
 
 ## 1. Introduction – a Tour of Multiple View Geometry
 
@@ -48,23 +48,24 @@ most particularly because of its connection to **camera calibration**, as will b
 ### 1.2 Camera projections
 
 The most general imaging projection is represented by an arbitrary 3×4 matrix of rank 3,
-acting on the homogeneous coordinates of the point in IP3 mapping it to the imaged point in IP2.
-This matrix P is known as the camera matrix.
+acting on the homogeneous coordinates of the point in $$ \mathbb{P}^3 $$
+mapping it to the imaged point in $$ \mathbb{P}^2 $$ .
+This matrix P is known as the **camera matrix**.
 
- x y wT= P3×4   X Y Z T T  
+$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = P_{3×4}  \begin{pmatrix} X \\ Y \\ Z \\ T \end{pmatrix} $$
 
 Furthermore, if all the points lie on a plane
 (we may choose this as the plane Z = 0) then the linear mapping reduces to 
 
-x y wT= H3×3   X Y T T
+$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = H_{3×3} \begin{pmatrix} X \\ Y \\ T \end{pmatrix} $$
 
-which is a projective transformation.
+which is a **projective transformation**.
 
 The absolute conic, however being a conic in the plane at infinity
 must project to a conic in the image.
-The resulting image curve is called the Image of the Absolute Conic,
+The resulting image curve is called the **Image of the Absolute Conic**,
 or IAC. If the location of the IAC is known in an image,
-then we say that the camera is calibrated.
+then we say that the camera is **calibrated**.
 
 Knowing the IAC, one can measure the angle between rays by direct measurements in the image.
 
@@ -72,57 +73,62 @@ Knowing the IAC, one can measure the angle between rays by direct measurements i
 
 In the two-view case, therefore, we consider a set of correspondences 
 xi ↔ xi’ in two images. It is assumed that there exist some camera matrices,
-P and P and a set of 3D points Xi that give rise to
-these image correspondences in the sense that PXi = xi and P Xi = x i.
-Thus, the point Xi projects to the two given data points.
-However, neither the cameras (represented by projection matrices P and P ),
-nor the points Xi are known. It is our task to determine them. 
+P and P and a set of 3D points $$ X_i $$ that give rise to
+these image correspondences in the sense that $$ P X_i = x_i $$ and $$ P X_i = x_i^{\prime} $$.
+Thus, the point $$ X_i $$ projects to the two given data points.
+However, neither the cameras (represented by projection matrices $$ P $$ and $$ P^{\prime} $$),
+nor the points $$ X_i $$ are known. It is our task to determine them. 
 
-It is possible to apply a projective transformation (represented by a 4 × 4 matrix H)
-to each point Xi, and on the right of each camera matrix Pj ,
+It is possible to apply a projective transformation (represented by a 4 × 4 matrix $$ H $$)
+to each point $$ X_i $$ , and on the right of each camera matrix $$ P_j $$ ,
 without changing the projected image points, thus: 
-PjXi = (PjH-1 ) (HXi).
+
+$$ P_j X_i = (P_j H^{-1} ) (H X_i) $$
+
 There is no compelling reason to choose one set of points and camera matrices over the other.
 The choice of H is essentially arbitrary,
 and we say that the reconstruction has a projective ambiguity,
-or is a projective reconstruction.
+or is a **projective reconstruction**.
 
 It is possible to reconstruct a set of points from two views,
 up to an unavoidable projective ambiguity. Well, to be able to say this,
 we need to make a few qualifications; there must be suffi- ciently many points,
-at least seven, and they must not lie in one of various well-defined critical configurations.
+at least seven, and they must not lie in one of various well-defined **critical configurations**.
 
-The basic tool in the reconstruction of point sets from two views is the fundamental matrix,
-which represents the constraint obeyed by image points x and x’
+The basic tool in the reconstruction of point sets from two views is the **fundamental matrix**,
+which represents the constraint obeyed by image points $$ x $$ and $$ x^{\prime} $$
 if they are to be images of the same 3D point.
 This constraint arises from the coplanarity of the camera centres of the two views,
-the images points and the space point. Given the fundamental matrix F,
-a pair of matching points   xi ↔ xi’ must satisfy
-x'iT F xi = 0
-where F is a 3 × 3 matrix of rank 2. 
+the images points and the space point. Given the fundamental matrix $$ F $$,
+a pair of matching points $$ x_i ↔ x_i^{\prime} $$ must satisfy
 
-Given the two cameras (P, P’ ) and the corresponding image point pairs xi ↔ x’ i,
-find the 3D point Xi that projects to the given image points.
-Solving for X in this way is known as triangulation. 
+$$ x_i^{\prime \intercal} F x_i = 0 $$
+
+where $$ F $$ is a $$ 3 × 3 $$ matrix of rank 2. 
+
+Given the two cameras $$ (P, P’ ) $$ and the corresponding image point pairs $$ x_i ↔ x_i^{\prime} $$,
+find the 3D point $$ X_i $$ that projects to the given image points.
+Solving for $$ X $$ in this way is known as **triangulation**. 
 
 ### 1.4 Three-view geometry
 
 Whereas for two views, the basic algebraic entity is the fundamental matrix,
-for three views this role is played by the trifocal tensor.
-The trifocal tensor is a 3 × 3 × 3 array of numbers 
+for three views this role is played by the **trifocal tensor**.
+The trifocal tensor is a $$ 3 × 3 × 3 $$ array of numbers 
 that relate the coordinates of corresponding points or lines in three views.
-The trifocal tensor is of the form Tijk , having two upper and one lower index.
+The trifocal tensor is of the form $$ \mathcal{T}_i ^{jk} $$ , having two upper and one lower index.
 
 There is a point X in space that maps to x in the first image,
-and to points x’ and x’’ lying on the lines l’ and l’’ in the other two images.
+and to points $$ x^{\prime} $$ and $$ x'' $$ lying on the lines $$ l' $$ and $$ l'' $$ in the other two images.
 The coordinates of these three images are then related via the trifocal tensor relationship:  
-ijk xi lj' lk'' Tijk = 0
+
+$$ \displaystyle\sum_{ijk} x_i l_j^{\prime} l_k^{\prime \prime} \mathcal{T}_i ^{jk} = 0 $$
 
 The 27 elements of the tensor are not independent,
-however, but are related by a set of so called internal constraints.
+however, but are related by a set of so called **internal constraints**.
 
 The fundamental matrix (which is a 2-view tensor) also satisfies an internal constraint
-but a relatively simple one: the elements obey detF=0.
+but a relatively simple one: the elements obey $$ det F = 0 $$.
 
 Once the trifocal tensor is known,
 it is possible to extract the three camera matrices from it,
@@ -137,16 +143,16 @@ One way to proceed is to reconstruct the scene bit by bit,
 using three-view or two-view techniques.
 
 The task of reconstruction becomes easier if we are able to apply a simpler camera model,
-known as the affine camera.
+known as the **affine camera**.
 This camera model is a fair approximation to perspective projection
 whenever the distance to the scene is large
 compared with the difference in depth between the back and front of the scene.
 If a set of points are visible in all of a set of n views involving an affine camera,
-then a well-known algorithm, the factorization algorithm,
+then a well-known algorithm, the **factorization algorithm**,
 can be used to compute both the structure of the scene,
 and the specific camera models in one step using the Singular Value Decomposition. 
 
-The dominant methodology for the general reconstruction problem is bundle adjustment.
+The dominant methodology for the general reconstruction problem is **bundle adjustment**.
 This is an iterative method,
 in which one attempts to fit a non-linear model to the measured data (the point correspondences).
 
@@ -155,7 +161,7 @@ it is possible to carry out reconstructions automatically from quite long sequen
 
 ### 1.6 Transfer
 
-Transfer: given the position of a point in one (or more) image(s),
+**Transfer**: given the position of a point in one (or more) image(s),
 determine where it will appear in all other images of the set.
 
 Suppose the camera rotates about its centre or that all the scene points of interest lie on a plane.
@@ -164,5 +170,48 @@ are the planar projective transformations between the images.
 In this case, a point seen in just one image can be transferred to any other image.
 
 ### 1.7 Euclidean reconstruction
+
+Now, suppose that we have computed a projective reconstruction of the world,
+using calibrated cameras. By definition,
+this means that the IAC is known in each of the images;
+let it be denoted by ωi in the i-th image.
+The back-projection of each ωi is a cone in space,
+and the absolute conic must lie in the intersection of all the cones.
+Two cones in general intersect in a fourth-degree curve,
+but given that they must intersect in a conic, this curve must split into two conics.
+Thus, reconstruction of the absolute conic from two images is not unique – rather,
+there are two possible solutions in general. However, from three or more images,
+the intersection of the cones is unique in general.
+Thus the absolute conic is determined and with it the Euclidean structure of the scene.
+
+Of course, if the Euclidean structure of the scene is known,
+then so is the position of the absolute conic.
+In this case we may project it back into each of the images,
+producing the IAC in each image, and hence calibrating the cameras.
+Thus **knowledge of the camera calibration is equivalent to
+being able to determine the Euclidean structure of the scene**.
+
+### 1.8 Auto-calibration
+
+Generally given three cameras known to have the same calibration,
+it is possible to determine the absolute conic, and hence the calibration of the cameras.
+
+**Knowing the plane at infinity**.
+Assuming one knows the plane at infinity,
+one can back-project a hypothesised IAC from each of a sequence of images
+and intersect the resulting cones with the plane at infinity.
+This gives a linear constraint on the entries of the matrix representing the IAC.
+Thus, auto-calibration is relatively simple,
+once the plane at infinity has been identified.
+The identification of the plane at infinity itself is substantially more difficult.
+
+**Auto-calibration given square pixels in the image**.
+If the cameras are partially calibrated,
+then it is possible to complete the calibration starting from a projective reconstruction.
+One interesting example is the square-pixel constraint on the cameras.
+What this means is that a Euclidean coordinate system is known in each image.
+In this case, the absolute conic,
+lying in the plane at infinity in the world must meet the image plane in its two circular points.
+The circular points in a plane are the two points where the absolute conic meets that plane.
 
 
