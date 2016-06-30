@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes for MultiView Geometry in CV Chap 1 and 2"
+title: "Notes for MultiView Geometry in CV"
 date: 2016-06-13 22:00:00 +0800
 ---
 
@@ -9,14 +9,16 @@ date: 2016-06-13 22:00:00 +0800
 - [Chapter 1. Introduction – the ubiquitous projective geometry](#Chap1)  
 - [Chapter 2. Projective Geometry and Transformations of 2D](#Chap2)
 
-<a name="Chap1"></a>## 1. Introduction – a Tour of Multiple View Geometry
+<!-- excerpt -->
+
+<a name="Chap1"></a>
+
+## 1. Introduction – a Tour of Multiple View Geometry
 
 ### 1.1 Introduction – the ubiquitous projective geometry
 
 The points at infinity in the two-dimensional projective space form a line,
 usually called the **line at infinity**. In three-dimensions they form the **plane at infinity**.
-
-<!-- excerpt -->
 
 ...**projective transformation**, in which
 the coordinate vector is multiplied by a non-singular matrix.
@@ -217,7 +219,9 @@ In this case, the absolute conic,
 lying in the plane at infinity in the world must meet the image plane in its two circular points.
 The circular points in a plane are the two points where the absolute conic meets that plane.
 
-<a name="Chap2"></a>## 2. Projective Geometry and Transformations of 2D
+<a name="Chap2"></a>
+
+## 2. Projective Geometry and Transformations of 2D
 
 ### 2.1 Planar geometry
 A point is identified with a vector in terms of some coordinate basis.
@@ -238,22 +242,55 @@ A point $$ \mathbf{x} = (x, y)^\intercal $$ lies on the line $$ \mathbf{l} = (a,
 
 $$ (x, y, 1) (a, b, c)^\intercal = (x, y, 1) \mathbf{l} = 0 $$
 
-The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$.
+**The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$ **.
 The set of vectors $$ (kx, ky, k)^\intercal $$ for varying values of $$ k $$
-to be a representation of the point $$ (x, y)^\intercal $$ in \mathbb{R}^2.
+to be a representation of the point $$ (x, y)^\intercal $$ in $$ \mathbb{R}^2 $$.
 Thus, just as with lines, points are represented by homogeneous vectors.
 
-Degrees of freedom (dof).
+**Degrees of freedom (dof).**
 To specify a point two values must be provided, namely its x- and y-coordinates.
 A line is specified by two parameters (the two independent ratios $$ {a : b : c} $$) and so has two degrees of freedom.
 
-Intersection of lines.
+**Intersection of lines.**
 From the triple scalar product identity
 $$ \mathbf{l} (\mathbf{l} × \mathbf{l}^{\prime} ) = \mathbf{l}^{\prime} (\mathbf{l} × \mathbf{l}^{\prime} ) = 0 $$,
 we see that $$ \mathbf{l}^\intercal \mathbf{x} = \mathbf{l}^{\prime \intercal} \mathbf{x} = 0 $$.
-Thus, the intersection of two lines l and l is the point $$ \mathbf{x} = \mathbf{l} × \mathbf{l}^{\prime} $$.
+Thus, **the intersection of two lines l and l is the point $$ \mathbf{x} = \mathbf{l} × \mathbf{l}^{\prime} $$.**
 
 Consider the simple problem of determining the intersection of the lines $$ x = 1  $$ and $$ y = 1 $$.
 $$  \mathbf{l} = (−1, 0, 1)^\intercal,    \mathbf{l}'  = (0, −1, 1)^\intercal $$.
+
+$$ \mathbf{x} = \mathbf{l} \times \mathbf{l}'
+              = \begin{vmatrix} i & j & k \\
+                               -1 & 0 & 1 \\
+                               0 & -1 & 1 \end{vmatrix} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} $$
+
+which is the inhomogeneous point $$ (1, 1)^\intercal $$ as required.
+
+**Line joining points. The line through two points $$ x $$ and $$ x $$ is $$ \mathbf{l} = x × x $$.**
+
+**Intersection of parallel lines.**
+The intersection of parallel lines $$ \mathbf{l} = (a, b, c)^\intercal $$ and
+$$ \mathbf{l}' = (a, b, c')^\intercal $$ is $$ \mathbf{l} × \mathbf{l}' = (c − c) (b, −a, 0)^\intercal $$,
+and ignoring the scale factor $$ (c − c) $$, this is the point $$ (b, −a, 0)^\intercal $$. 
+
+**Ideal points and the line at infinity.**
+Homogeneous vectors $$ \mathbf{x} = (x_1, x_2, x_3)^\intercal $$ with last coordinate $$ x_3 = 0 $$ are known as ideal points,
+or points at infinity. The set of all **ideal** points may be written $$ (x_1, x_2, 0)T $$,
+with a particular point specified by the ratio $$ x_1 : x_2 $$. Note that this set lies on a single line,
+the **line at infinity**, denoted by the vector $$ l_∞ = (0, 0, 1)^\intercal $$._
+Indeed, one verifies that $$ (0, 0, 1) (x_1, x_2, 0)^\intercal = 0 $$.
+
+**A model for the projective plane.** A fruitful way of thinking of
+$$ \mathbb{P}^2 $$ is as a set of rays in $$ \mathbb{R}^3 $$.
+The set of all vectors $$ k(x1, x2, x3)^\intercal $$ as $$ k $$ varies forms a ray through the origin.
+Such a ray may be thought of as representing a single point in $$ \mathbb{P}^2 $$.
+In this model, the lines in $$ \mathbb{P}^2 $$ are planes passing through the origin.
+One verifies that two nonidentical rays lie on exactly one plane,
+and any two planes intersect in one ray.
+This is the analogue of two distinct points uniquely defining a line,
+and two lines always intersecting in a point.
+
+![mvgcv-1](https://lh3.googleusercontent.com/2KbKYhmY3UxMjYdn-3mUgTkog3pxnU99DyzTNtPZnL57N9qoRR9dn_F6IRP4XUPFO3zHANnOv7XCXw=w545-h430-no)
 
 
