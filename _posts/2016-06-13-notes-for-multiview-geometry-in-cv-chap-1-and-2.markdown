@@ -1,48 +1,51 @@
 ---
 layout: post
-title: "Notes for MultiView Geometry in CV Chap 1"
+title: "Notes for MultiView Geometry in CV Chap 1 and 2"
 date: 2016-06-13 22:00:00 +0800
 ---
 
-# Notes for Chapter 1 of Multiple View Geometry in Computer Vision
+# Notes for Chapter 1 & 2 of Multiple View Geometry in Computer Vision
 
-## 1. Introduction – a Tour of Multiple View Geometry
+- [Chapter 1. Introduction – the ubiquitous projective geometry](#Chap1)  
+- [Chapter 2. Projective Geometry and Transformations of 2D](#Chap2)
+
+<a name="Chap1"></a>## 1. Introduction – a Tour of Multiple View Geometry
 
 ### 1.1 Introduction – the ubiquitous projective geometry
 
-The points at infinity in the two-dimensional projective space form a line, 
+The points at infinity in the two-dimensional projective space form a line,
 usually called the **line at infinity**. In three-dimensions they form the **plane at infinity**.
 
 <!-- excerpt -->
 
-...**projective transformation**, in which 
-the coordinate vector is multiplied by a non-singular matrix. 
-Under such a mapping, points at infinity (with final coordinate zero) 
+...**projective transformation**, in which
+the coordinate vector is multiplied by a non-singular matrix.
+Under such a mapping, points at infinity (with final coordinate zero)
 are mapped to arbitrary other points. The points at infinity are not preserved.
 
-The geometry of the projective plane and a distinguished line 
-is known as **affine geometry** and any projective transformation that 
-maps the distinguished line in one space to the distinguished line of 
+The geometry of the projective plane and a distinguished line
+is known as **affine geometry** and any projective transformation that
+maps the distinguished line in one space to the distinguished line of
 the other space is known as an **affine transformation**.
 
 The equation for a circle in homogeneous coordinates $$ (x, y, w) $$ is of the form
 
 $$ (x − aw)^2 + (y − bw)^2 = r^2 w^2 $$
 
-Every circle passes through the points $$ (1, ±i, 0)^\intercal $$ , 
-and therefore they lie in the intersection of any two circles. 
-Since their final coordinate is zero, these two points lie on the line at infinity. 
+Every circle passes through the points $$ (1, ±i, 0)^\intercal $$ ,
+and therefore they lie in the intersection of any two circles.
+Since their final coordinate is zero, these two points lie on the line at infinity.
 For obvious reasons, they are called the **circular points** of the plane.
 
-Euclidean geometry arises from projective geometry by singling out first a line at infinity 
-and subsequently, two points **called circular** points lying on this line. 
+Euclidean geometry arises from projective geometry by singling out first a line at infinity
+and subsequently, two points **called circular** points lying on this line.
 
-This line of thought leads to the discovery that in homogeneous coordinates 
+This line of thought leads to the discovery that in homogeneous coordinates
 $$ (X, Y, Z, T)^\intercal $$ all spheres intersect the plane at infinity
 in a curve with the equations: $$ X^2 + Y^2 + Z^2 = 0 $$ ; $$ T = 0 $$ .
-This is a second-degree curve (a conic) lying on the plane at infinity, 
-and consisting only of complex points. 
-It is known as the **absolute conic** and is one of the key geometric entities in this book, 
+This is a second-degree curve (a conic) lying on the plane at infinity,
+and consisting only of complex points.
+It is known as the **absolute conic** and is one of the key geometric entities in this book,
 most particularly because of its connection to **camera calibration**, as will be seen later.
 
 ### 1.2 Camera projections
@@ -71,17 +74,17 @@ Knowing the IAC, one can measure the angle between rays by direct measurements i
 
 ### 1.3 Reconstruction from more than one view
 
-In the two-view case, therefore, we consider a set of correspondences 
+In the two-view case, therefore, we consider a set of correspondences
 xi ↔ xi’ in two images. It is assumed that there exist some camera matrices,
-$ \mathbf{P} $ and $ \mathbf{P}^{\prime} $ and a set of 3D points $$ X_i $$ that give rise to
+$$ \mathbf{P} $$ and $$ \mathbf{P}^{\prime} $$ and a set of 3D points $$ X_i $$ that give rise to
 these image correspondences in the sense that $$ \mathbf{P} X_i = x_i $$ and $$ \mathbf{P}^{\prime} X_i = x_i^{\prime} $$.
 Thus, the point $$ X_i $$ projects to the two given data points.
 However, neither the cameras (represented by projection matrices $$ \mathbf{P} $$ and $$ \mathbf{P}^{\prime} $$),
-nor the points $$ X_i $$ are known. It is our task to determine them. 
+nor the points $$ X_i $$ are known. It is our task to determine them.
 
 It is possible to apply a projective transformation (represented by a 4 × 4 matrix $$ \mathbf{H} $$)
 to each point $$ X_i $$ , and on the right of each camera matrix $$ P_j $$ ,
-without changing the projected image points, thus: 
+without changing the projected image points, thus:
 
 $$ P_j X_i = (P_j \mathbf{H}^{-1} ) (\mathbf{H} X_i) $$
 
@@ -104,11 +107,11 @@ a pair of matching points $$ x_i ↔ x_i^{\prime} $$ must satisfy
 
 $$ x_i^{\prime \intercal} \mathbf{F} x_i = 0 $$
 
-where $$ \mathbf{F} $$ is a $$ 3 × 3 $$ matrix of rank 2. 
+where $$ \mathbf{F} $$ is a $$ 3 × 3 $$ matrix of rank 2.
 
 Given the two cameras $$ (\mathbf{P}, \mathbf{P}^{\prime} ) $$ and the corresponding image point pairs $$ x_i ↔ x_i^{\prime} $$,
 find the 3D point $$ X_i $$ that projects to the given image points.
-Solving for $$ X $$ in this way is known as **triangulation**. 
+Solving for $$ X $$ in this way is known as **triangulation**.
 
 ### 1.4 Three-view geometry
 
@@ -116,16 +119,16 @@ Whereas for two views, the basic algebraic entity is the fundamental matrix,
 for three views this role is played by the **trifocal tensor**.
 The trifocal tensor is a $$ 3 × 3 × 3 $$ array of numbers 
 that relate the coordinates of corresponding points or lines in three views.
-The trifocal tensor is of the form $$ \mathcal{T}_i ^{jk} $$_ , having two upper and one lower index.
+The trifocal tensor is of the form $$ \mathcal{T}_i ^{jk} $$ , having two upper and one lower index._
 
 There is a point X in space that maps to x in the first image,
 and to points $$ x^{\prime} $$ and $$ x'' $$ lying on the lines $$ l' $$ and $$ l'' $$ in the other two images.
-The coordinates of these three images are then related via the trifocal tensor relationship:  
+The coordinates of these three images are then related via the trifocal tensor relationship:
 
-$$ \displaystyle\sum_{ijk} x_i l_j^{\prime} l_k^{\prime \prime} \mathcal{T}_i ^{jk} = 0 $$_
+$$ \displaystyle\sum_{ijk} x_i l_j^{\prime} l_k^{\prime \prime} \mathcal{T}_i ^{jk} = 0 $$
 
 The 27 elements of the tensor are not independent,
-however, but are related by a set of so called **internal constraints**.
+however, but are related by a set of so called **internal constraints**._
 
 The fundamental matrix (which is a 2-view tensor) also satisfies an internal constraint
 but a relatively simple one: the elements obey $$ det \mathbf{F} = 0 $$.
@@ -150,7 +153,7 @@ compared with the difference in depth between the back and front of the scene.
 If a set of points are visible in all of a set of n views involving an affine camera,
 then a well-known algorithm, the **factorization algorithm**,
 can be used to compute both the structure of the scene,
-and the specific camera models in one step using the Singular Value Decomposition. 
+and the specific camera models in one step using the Singular Value Decomposition.
 
 The dominant methodology for the general reconstruction problem is **bundle adjustment**.
 This is an iterative method,
@@ -214,7 +217,7 @@ In this case, the absolute conic,
 lying in the plane at infinity in the world must meet the image plane in its two circular points.
 The circular points in a plane are the two points where the absolute conic meets that plane.
 
-## 2. Projective Geometry and Transformations of 2D
+<a name="Chap2"></a>## 2. Projective Geometry and Transformations of 2D
 
 ### 2.1 Planar geometry
 A point is identified with a vector in terms of some coordinate basis.
@@ -223,21 +226,21 @@ and a conic section (more briefly, a conic) is represented by a symmetric matrix
 
 ### 2.2 The 2D projective plane
 **Homogeneous representation of lines.**
-The vectors $$ (a, b, c)\intercal $$ and $$ k(a, b, c)\intercal $$ represent the same line,for any non-zero k.
+The vectors $$ (a, b, c)^\intercal $$ and $$ k(a, b, c)^\intercal $$ represent the same line,for any non-zero k.
 An equivalence class of vectors under this equivalence relationship is known as a homogeneous vector.
-Any particular vector $$ (a, b, c)\intercal $$ is a representative of the equivalence class.
-The set of equivalence classes of vectors in $$ \mathbb{R}^3 − (0, 0, 0)\intercal $$ forms the projective space IP2.
-The notation $$ −(0, 0, 0)\intercal $$ indicates that the vector $$ (0, 0, 0)\intercal $$ ,
+Any particular vector $$ (a, b, c)^\intercal $$ is a representative of the equivalence class.
+The set of equivalence classes of vectors in $$ \mathbb{R}^3 − (0, 0, 0)^\intercal $$ forms the projective space $$ \mathbb{P}^2 $$.
+The notation $$ −(0, 0, 0)^\intercal $$ indicates that the vector $$ (0, 0, 0)^\intercal $$ ,
 which does not correspond to any line, is excluded.
 
 Homogeneous representation of points.
-A point $$ \mathbf{x} = (x, y)\intercal $$ lies on the line $$ \mathbf{l} = (a, b, c)\intercal $$ if and only if $$ ax + by + c = 0 $$.
+A point $$ \mathbf{x} = (x, y)^\intercal $$ lies on the line $$ \mathbf{l} = (a, b, c)^\intercal $$ if and only if $$ ax + by + c = 0 $$.
 
-$$ (x, y, 1)(a, b, c)T = (x, y, 1)\mathbf{l} = 0 $$
+$$ (x, y, 1) (a, b, c)^\intercal = (x, y, 1) \mathbf{l} = 0 $$
 
 The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$.
-The set of vectors $$ (kx, ky, k)\intercal $$ for varying values of $$ k $$
-to be a representation of the point $$ (x, y)\intercal $$ in \mathbb{R}^2.
+The set of vectors $$ (kx, ky, k)^\intercal $$ for varying values of $$ k $$
+to be a representation of the point $$ (x, y)^\intercal $$ in \mathbb{R}^2.
 Thus, just as with lines, points are represented by homogeneous vectors.
 
 Degrees of freedom (dof).
@@ -245,11 +248,12 @@ To specify a point two values must be provided, namely its x- and y-coordinates.
 A line is specified by two parameters (the two independent ratios $$ {a : b : c} $$) and so has two degrees of freedom.
 
 Intersection of lines.
-From the triple scalar product identity 
-$$ \mathbf{l} (\mathbf{l} × \mathbf{l}^{\prime} ) = \mathbf{l}^{\prime} (\mathbf{l} × \mathbf{l}^{prime} ) = 0 $$,
+From the triple scalar product identity
+$$ \mathbf{l} (\mathbf{l} × \mathbf{l}^{\prime} ) = \mathbf{l}^{\prime} (\mathbf{l} × \mathbf{l}^{\prime} ) = 0 $$,
 we see that $$ \mathbf{l}^\intercal \mathbf{x} = \mathbf{l}^{\prime \intercal} \mathbf{x} = 0 $$.
-Thus, the intersection of two lines l and l is the point \mathbf{x} = \mathbf{l} × \mathbf{l}^{\prime}  .
+Thus, the intersection of two lines l and l is the point $$ \mathbf{x} = \mathbf{l} × \mathbf{l}^{\prime} $$.
 
-Consider the simple problem of determining the intersection of the lines $$ x = 1  $$ and $$ y = 1 $$. 
-$$  \mathbf{l} = (−1, 0, 1)^\intercal,    \mathbf{l}'  = (0, −1, 1)^\intercal $$. 
+Consider the simple problem of determining the intersection of the lines $$ x = 1  $$ and $$ y = 1 $$.
+$$  \mathbf{l} = (−1, 0, 1)^\intercal,    \mathbf{l}'  = (0, −1, 1)^\intercal $$.
+
 
