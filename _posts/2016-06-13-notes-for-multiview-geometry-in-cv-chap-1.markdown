@@ -52,12 +52,12 @@ acting on the homogeneous coordinates of the point in $$ \mathbb{P}^3 $$
 mapping it to the imaged point in $$ \mathbb{P}^2 $$ .
 This matrix P is known as the **camera matrix**.
 
-$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = P_{3×4}  \begin{pmatrix} X \\ Y \\ Z \\ T \end{pmatrix} $$
+$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = \mathbf{P}_{3×4}  \begin{pmatrix} X \\ Y \\ Z \\ T \end{pmatrix} $$
 
 Furthermore, if all the points lie on a plane
 (we may choose this as the plane Z = 0) then the linear mapping reduces to 
 
-$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = H_{3×3} \begin{pmatrix} X \\ Y \\ T \end{pmatrix} $$
+$$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = \mathbf{H}_{3×3} \begin{pmatrix} X \\ Y \\ T \end{pmatrix} $$
 
 which is a **projective transformation**.
 
@@ -73,20 +73,20 @@ Knowing the IAC, one can measure the angle between rays by direct measurements i
 
 In the two-view case, therefore, we consider a set of correspondences 
 xi ↔ xi’ in two images. It is assumed that there exist some camera matrices,
-P and P and a set of 3D points $$ X_i $$ that give rise to
-these image correspondences in the sense that $$ P X_i = x_i $$ and $$ P X_i = x_i^{\prime} $$.
+$ \mathbf{P} $ and $ \mathbf{P}^{\prime} $ and a set of 3D points $$ X_i $$ that give rise to
+these image correspondences in the sense that $$ \mathbf{P} X_i = x_i $$ and $$ \mathbf{P}^{\prime} X_i = x_i^{\prime} $$.
 Thus, the point $$ X_i $$ projects to the two given data points.
-However, neither the cameras (represented by projection matrices $$ P $$ and $$ P^{\prime} $$),
+However, neither the cameras (represented by projection matrices $$ \mathbf{P} $$ and $$ \mathbf{P}^{\prime} $$),
 nor the points $$ X_i $$ are known. It is our task to determine them. 
 
-It is possible to apply a projective transformation (represented by a 4 × 4 matrix $$ H $$)
+It is possible to apply a projective transformation (represented by a 4 × 4 matrix $$ \mathbf{H} $$)
 to each point $$ X_i $$ , and on the right of each camera matrix $$ P_j $$ ,
 without changing the projected image points, thus: 
 
-$$ P_j X_i = (P_j H^{-1} ) (H X_i) $$
+$$ P_j X_i = (P_j \mathbf{H}^{-1} ) (\mathbf{H} X_i) $$
 
 There is no compelling reason to choose one set of points and camera matrices over the other.
-The choice of H is essentially arbitrary,
+The choice of \mathbf{H} is essentially arbitrary,
 and we say that the reconstruction has a projective ambiguity,
 or is a **projective reconstruction**.
 
@@ -99,14 +99,14 @@ The basic tool in the reconstruction of point sets from two views is the **funda
 which represents the constraint obeyed by image points $$ x $$ and $$ x^{\prime} $$
 if they are to be images of the same 3D point.
 This constraint arises from the coplanarity of the camera centres of the two views,
-the images points and the space point. Given the fundamental matrix $$ F $$,
+the images points and the space point. Given the fundamental matrix $$ \mathbf{F} $$,
 a pair of matching points $$ x_i ↔ x_i^{\prime} $$ must satisfy
 
-$$ x_i^{\prime \intercal} F x_i = 0 $$
+$$ x_i^{\prime \intercal} \mathbf{F} x_i = 0 $$
 
-where $$ F $$ is a $$ 3 × 3 $$ matrix of rank 2. 
+where $$ \mathbf{F} $$ is a $$ 3 × 3 $$ matrix of rank 2. 
 
-Given the two cameras $$ (P, P’ ) $$ and the corresponding image point pairs $$ x_i ↔ x_i^{\prime} $$,
+Given the two cameras $$ (\mathbf{P}, \mathbf{P}^{\prime} ) $$ and the corresponding image point pairs $$ x_i ↔ x_i^{\prime} $$,
 find the 3D point $$ X_i $$ that projects to the given image points.
 Solving for $$ X $$ in this way is known as **triangulation**. 
 
@@ -116,19 +116,19 @@ Whereas for two views, the basic algebraic entity is the fundamental matrix,
 for three views this role is played by the **trifocal tensor**.
 The trifocal tensor is a $$ 3 × 3 × 3 $$ array of numbers 
 that relate the coordinates of corresponding points or lines in three views.
-The trifocal tensor is of the form $$ \mathcal{T}_i ^{jk} $$ , having two upper and one lower index.
+The trifocal tensor is of the form $$ \mathcal{T}_i ^{jk} $$_ , having two upper and one lower index.
 
 There is a point X in space that maps to x in the first image,
 and to points $$ x^{\prime} $$ and $$ x'' $$ lying on the lines $$ l' $$ and $$ l'' $$ in the other two images.
 The coordinates of these three images are then related via the trifocal tensor relationship:  
 
-$$ \displaystyle\sum_{ijk} x_i l_j^{\prime} l_k^{\prime \prime} \mathcal{T}_i ^{jk} = 0 $$
+$$ \displaystyle\sum_{ijk} x_i l_j^{\prime} l_k^{\prime \prime} \mathcal{T}_i ^{jk} = 0 $$_
 
 The 27 elements of the tensor are not independent,
 however, but are related by a set of so called **internal constraints**.
 
 The fundamental matrix (which is a 2-view tensor) also satisfies an internal constraint
-but a relatively simple one: the elements obey $$ det F = 0 $$.
+but a relatively simple one: the elements obey $$ det \mathbf{F} = 0 $$.
 
 Once the trifocal tensor is known,
 it is possible to extract the three camera matrices from it,
@@ -214,4 +214,42 @@ In this case, the absolute conic,
 lying in the plane at infinity in the world must meet the image plane in its two circular points.
 The circular points in a plane are the two points where the absolute conic meets that plane.
 
+## 2. Projective Geometry and Transformations of 2D
+
+### 2.1 Planar geometry
+A point is identified with a vector in terms of some coordinate basis.
+A line is also identified with a vector,
+and a conic section (more briefly, a conic) is represented by a symmetric matrix.
+
+### 2.2 The 2D projective plane
+**Homogeneous representation of lines.**
+The vectors $$ (a, b, c)\intercal $$ and $$ k(a, b, c)\intercal $$ represent the same line,for any non-zero k.
+An equivalence class of vectors under this equivalence relationship is known as a homogeneous vector.
+Any particular vector $$ (a, b, c)\intercal $$ is a representative of the equivalence class.
+The set of equivalence classes of vectors in $$ \mathbb{R}^3 − (0, 0, 0)\intercal $$ forms the projective space IP2.
+The notation $$ −(0, 0, 0)\intercal $$ indicates that the vector $$ (0, 0, 0)\intercal $$ ,
+which does not correspond to any line, is excluded.
+
+Homogeneous representation of points.
+A point $$ \mathbf{x} = (x, y)\intercal $$ lies on the line $$ \mathbf{l} = (a, b, c)\intercal $$ if and only if $$ ax + by + c = 0 $$.
+
+$$ (x, y, 1)(a, b, c)T = (x, y, 1)\mathbf{l} = 0 $$
+
+The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$.
+The set of vectors $$ (kx, ky, k)\intercal $$ for varying values of $$ k $$
+to be a representation of the point $$ (x, y)\intercal $$ in \mathbb{R}^2.
+Thus, just as with lines, points are represented by homogeneous vectors.
+
+Degrees of freedom (dof).
+To specify a point two values must be provided, namely its x- and y-coordinates.
+A line is specified by two parameters (the two independent ratios $$ {a : b : c} $$) and so has two degrees of freedom.
+
+Intersection of lines.
+From the triple scalar product identity 
+$$ \mathbf{l} (\mathbf{l} × \mathbf{l}^{\prime} ) = \mathbf{l}^{\prime} (\mathbf{l} × \mathbf{l}^{prime} ) = 0 $$,
+we see that $$ \mathbf{l}^\intercal \mathbf{x} = \mathbf{l}^{\prime \intercal} \mathbf{x} = 0 $$.
+Thus, the intersection of two lines l and l is the point \mathbf{x} = \mathbf{l} × \mathbf{l}^{\prime}  .
+
+Consider the simple problem of determining the intersection of the lines $$ x = 1  $$ and $$ y = 1 $$. 
+$$  \mathbf{l} = (−1, 0, 1)^\intercal,    \mathbf{l}'  = (0, −1, 1)^\intercal $$. 
 
