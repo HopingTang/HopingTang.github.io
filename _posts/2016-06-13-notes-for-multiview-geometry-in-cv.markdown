@@ -52,15 +52,15 @@ most particularly because of its connection to **camera calibration**, as will b
 
 ### 1.2 Camera projections
 
-The most general imaging projection is represented by an arbitrary 3×4 matrix of rank 3,
+The most general imaging projection is represented by an arbitrary $$ 3×4 $$ matrix of rank $$ 3 $$,
 acting on the homogeneous coordinates of the point in $$ \mathbb{P}^3 $$
 mapping it to the imaged point in $$ \mathbb{P}^2 $$ .
-This matrix P is known as the **camera matrix**.
+This matrix $$ \mathbf{P} $$ is known as the **camera matrix**.
 
 $$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = \mathbf{P}_{3×4}  \begin{pmatrix} X \\ Y \\ Z \\ T \end{pmatrix} $$
 
 Furthermore, if all the points lie on a plane
-(we may choose this as the plane Z = 0) then the linear mapping reduces to 
+(we may choose this as the plane $$ Z = 0 $$) then the linear mapping reduces to 
 
 $$ \begin{pmatrix} x \\ y \\ w \end{pmatrix} = \mathbf{H}_{3×3} \begin{pmatrix} X \\ Y \\ T \end{pmatrix} $$
 
@@ -77,7 +77,7 @@ Knowing the IAC, one can measure the angle between rays by direct measurements i
 ### 1.3 Reconstruction from more than one view
 
 In the two-view case, therefore, we consider a set of correspondences
-xi ↔ xi’ in two images. It is assumed that there exist some camera matrices,
+$$ x_i ↔ x_i’ $$ in two images. It is assumed that there exist some camera matrices,
 $$ \mathbf{P} $$ and $$ \mathbf{P}^{\prime} $$ and a set of 3D points $$ X_i $$ that give rise to
 these image correspondences in the sense that $$ \mathbf{P} X_i = x_i $$ and $$ \mathbf{P}^{\prime} X_i = x_i^{\prime} $$.
 Thus, the point $$ X_i $$ projects to the two given data points.
@@ -242,7 +242,7 @@ A point $$ \mathbf{x} = (x, y)^\intercal $$ lies on the line $$ \mathbf{l} = (a,
 
 $$ (x, y, 1) (a, b, c)^\intercal = (x, y, 1) \mathbf{l} = 0 $$
 
-**The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$ **.
+**The point x lies on the line l if and only if $$ \mathbf{x}^\intercal \mathbf{l} = 0 $$**.
 The set of vectors $$ (kx, ky, k)^\intercal $$ for varying values of $$ k $$
 to be a representation of the point $$ (x, y)^\intercal $$ in $$ \mathbb{R}^2 $$.
 Thus, just as with lines, points are represented by homogeneous vectors.
@@ -283,7 +283,7 @@ Indeed, one verifies that $$ (0, 0, 1) (x_1, x_2, 0)^\intercal = 0 $$.
 
 **A model for the projective plane.** A fruitful way of thinking of
 $$ \mathbb{P}^2 $$ is as a set of rays in $$ \mathbb{R}^3 $$.
-The set of all vectors $$ k(x1, x2, x3)^\intercal $$ as $$ k $$ varies forms a ray through the origin.
+The set of all vectors $$ k(x_1, x_2, x_3)^\intercal $$ as $$ k $$ varies forms a ray through the origin.
 Such a ray may be thought of as representing a single point in $$ \mathbb{P}^2 $$.
 In this model, the lines in $$ \mathbb{P}^2 $$ are planes passing through the origin.
 One verifies that two nonidentical rays lie on exactly one plane,
@@ -293,4 +293,252 @@ and two lines always intersecting in a point.
 
 ![mvgcv-1](https://lh3.googleusercontent.com/2KbKYhmY3UxMjYdn-3mUgTkog3pxnU99DyzTNtPZnL57N9qoRR9dn_F6IRP4XUPFO3zHANnOv7XCXw=w545-h430-no)
 
+Points and lines may be obtained by intersecting this set of rays and planes by the plane $$ x_3 = 1 $$.
+As illustrated in the figure above the rays representing ideal points
+and the plane representing $$ l_\infty $$ are parallel to the plane $$ x_3 = 1 $$.
+Points and lines of $$ \mathbb{P}^2 $$ are represented by rays and planes,
+respectively, through the origin in $$ \mathbb{R}^3 $$.
+Lines lying in the $$ x_1 x_2-plane $$ represent ideal points, and the $$ x_1 x_2-plane $$ represents $$ l_\infty $$.
 
+_(HopingTang: That's tell us, why the combination of points in infinity form the line in infinity.)
+
+
+**Duality principle.**
+To any theorem of 2-dimensional projective geometry there corresponds a dual theorem,
+which may be derived by interchanging the roles of points and lines in the original theorem.
+
+**Conic.**
+The equation of a conic in inhomogeneous coordinates is
+
+$$ ax^2 + bxy + cy^2 + dx + ey + f = 0 $$
+
+i.e. a polynomial of degree 2. “Homogenizing” this by the replacements: $$ x → x_1/x_3, y → x_2/x_3 $$ gives
+
+$$ a x_1^2 + b x_1 x_2 + c x_2^2 + d x_1 x_3 + e x_2 x_3 + f x_3^2 = 0 $$
+
+or in matrix form
+
+$$ \mathbf{x}^\intercal \mathbf{C} \mathbf{x} = 0 $$
+
+where the conic coefficient matrix C is given by
+
+$$ \mathbf{C} = \begin{bmatrix} a   &   b/2   & d/2 \\
+                               b/2  &    c    & e/2 \\
+                               d/2  &   c/2   &  f  \end{bmatrix}  $$
+
+Note that the conic coefficient matrix is symmetric.
+Multiplying $$ \mathbf{C} $$ by a non-zero scalar does not affect the above equations.
+Thus $$ \mathbf{C} $$  is a homogeneous representation of a conic.
+The conic has five degrees of freedom which can be thought of as the ratios $$ \{a : b : c : d : e : f\} $$
+or equivalently the six elements of a symmetric matrix less one for scale.
+
+**Tangent lines to conics.
+The line $$ \mathbf{l} $$ tangent to $$ \mathbf{C} $$ at a point $$ \mathbf{x} $$ 
+on $$ \mathbf{C} $$ is given by $$ \mathbf{l} = \mathbf{C} \mathbf{x} $$ .**
+
+**Dual conics.** A line $$ \mathbf{l} $$ tangent to the conic $$\mathbf{C} $$ satisfies
+$$ \mathbf{l}^\intercal \mathbf{C}^∗ \mathbf{l} = 0 $$.
+The notation $$ C^∗ $$ indicates that $$ C^∗ $$ is the adjoint matrix of $$ C $$.
+For a non-singular symmetric matrix $$ C^∗ = C^{−1} $$ (up to scale). Thus, $$ \mathbf{l}^\intercal \mathbf{C}^{−1} \mathbf{l} = 0 $$.
+The equation for a dual conic is straightforward to derive in the case that C has full rank. 
+The conic $$ \mathbf{C} $$ is the **envelope** of the lines $$ l $$.
+
+**Degenerate conics.**
+If the matrix $$ \mathbf{C} $$ is not of full rank, then the conic is termed degenerate.
+Degenerate point conics include two lines (rank 2), and a repeated line (rank 1).
+**Degenerate line conics** include two points (rank 2), and a repeated point (rank 1).
+For example, the line conic $$ \mathbf{C}^∗ = \mathbf{x} \mathbf{y}^\intercal + \mathbf{y} \mathbf{x}^\intercal $$ has rank 2
+and consists of lines passing through either of the two points $$ x $$ and $$ y $$.
+Note that for matrices that are not invertible $$ (\mathbf{C}^∗)^∗ \neq \mathbf{C} $$.
+
+### 2.3 Projective transformations
+A **projectivity** is an invertible mapping $$ h $$ from $$ \mathbb{P}^2 $$ to itself
+such that three points $$ x_1 $$, $$ x_2 $$ and $$ x_3 $$ lie on the same line
+if and only if $$ h(x_1) $$, $$ h(x_2) $$ and $$ h(x_3) $$ do.
+Projectivities form a group since the inverse of a projectivity is also a projectivity,
+and so is the composition of two projectivities.
+A projectivity is also called a **collineation** (a helpful name),
+a **projective transformation** or a **homography**: the terms are synonymous.
+
+**A mapping $$ h : \mathbb{P}^2 → \mathbb{P}^2 $$ is a projectivity
+if and only if there exists a non-singular $$ 3 × 3 $$ matrix $$ \mathbf{H} $$
+such that for any point in $$ \mathbb{P}^2 $$ 
+represented by a vector $$ x $$ it is true that $$ h(x) = \mathbf{H}x $$.**
+
+**Projective transformation.**
+A planar projective transformation is a linear transformation on homogeneous $$ 3 $$-vectors
+represented by a non-singular $$ 3 × 3 $$ matrix:
+
+$$ \begin{pmatrix} x_1' \\ x_2' \\ x_3' \end{pmatrix} = 
+   \begin{bmatrix} h_{11} & h_{12} & h_{13} \\ h_{11} & h_{12} & h_{13} \\ h_{11} & h_{12} & h_{13} \end{bmatrix}
+   \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}$$
+
+or more briefly, x = Hx.
+H is a homogeneous matrix.
+There are eight independent ratios amongst the nine elements of H,
+and it follows that a projective transformation has eight degrees of freedom.
+
+If the two coordinate systems defined in the two planes are both Euclidean (rectilinear) coordinate systems
+then the mapping defined by central projection is more restricted
+than an arbitrary projective transformation.
+It is called a **perspectivity** rather than a full projectivity,
+and may be represented by a transformation with **six degrees of freedom**.
+
+**Transformation of lines.**
+$$ \mathbf{l} ^\intercal \mathbf{x}_i' = \mathbf{l} ^\intercal \mathbf{H}^{−1} \mathbf{H} \mathbf{x}_i = 0 $$.
+Under the point transformation $$ \mathbf{x'} = \mathbf{H} \mathbf{x} $$, a line transforms as
+
+$$ \mathbf{l'} = \mathbf{H}^{−\intercal} \mathbf{l} $$.
+
+Points transform according to $$ \mathbf{H} $$, whereas lines (as rows) transform according to $$ \mathbf{H}^{−1} $$.
+Points transform **contravariantly** and lines transform **covariantly**.
+
+**Transformation of conics. Under a point transformation $$ \mathbf{x'} = \mathbf{H} \mathbf{x} $$,** becomes
+$$ \mathbf{x}^\intercal \mathbf{C}\mathbf{x} 
+= \mathbf{x'}^\intercal [\mathbf{H}^{−1} ] ^\intercal \mathbf{C}\mathbf{H}^{−1} \mathbf{x'}
+= \mathbf{x}^\intercal \mathbf{H}^{− \intercal} \mathbf{C}\mathbf{H}^{−1} \mathbf{x} $$
+**a conic $$ \mathbf{C} $$ transforms to $$ \mathbf{C'} = \mathbf{H}^{− \intercal} \mathbf{C}\mathbf{H}^{−1} $$.
+a dual conic $$ \mathbf{C}^∗ $$ transforms to
+$$ \mathbf{C}^{∗ \prime}= \mathbf{H}\mathbf{C}^∗  \mathbf{H}^\intercal  $$.**
+
+### 2.4 A hierarchy of transformations
+Projective transformations form a group, called the **projective linear group**,
+and it will be seen that these specializations are **subgroups** of this group.
+
+The group of invertible $$ n × n $$ matrices with real elements
+is the (real) general linear group on n dimensions, or $$ GL(n) $$.
+To obtain the projective linear group the matrices related by a scalar multiplier are identified,
+giving $$ PL(n) $$ (this is a quotient group of $$ GL(n) $$).
+In the case of projective transformations of the plane $$ n = 3 $$.
+The important subgroups of $$ PL(3) $$ include the affine group,
+which is the subgroup of $$ PL(3) $$ consisting of matrices
+for which the last row is $$ (0, 0, 1) $$,
+and the Euclidean group, which is a subgroup of the affine group
+for which in addition the upper left hand $$ 2 × 2 $$ matrix is orthogonal.
+One may also identify the oriented Euclidean group
+in which the upper left hand $$ 2 × 2 $$ matrix has determinant $$ 1 $$.
+
+**Class I: Isometries** are transformations of the plane \mathbb{R}^2 that preserve Euclidean distance
+(from iso = same, metric = measure). An isometry is represented as
+
+$$ \begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix}
+= \begin{bmatrix} \epsilon \cos \theta & - \sin \theta & t_x \\
+                  \epsilon \sin \theta &   \cos \theta & t_y \\
+                  0                    &   0           & 1  \end{bmatrix}
+  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} $$
+
+where $$ \epsilon = ±1 $$.
+If $$ \epsilon = 1 $$ then the isometry is **orientation-preserving** and is a **Euclidean transformation**
+(a composition of a translation and rotation).
+If $$ \epsilon = −1 $$ then the isometry reverses orientation.
+A planar Euclidean transformation can be written more concisely in block form as
+
+$$ \mathbf{x'} = \mathbf{H}_E \mathbf{x}
+= \begin{bmatrix} \mathbf{R} & \mathbf{t} \\ \mathbf{O} ^\intercal & 1 \end{bmatrix} \mathbf{x} $$
+
+where_ $$ \mathbf{R} $$ is a $$ 2 × 2 $$ rotation matrix
+(an orthogonal matrix such that
+$$ \mathbf{R} ^\intercal  \mathbf{R} = \mathbf{R}\mathbf{R}^\intercal  = \mathbf{I} $$),
+t a translation $$ 2 $$-vector, and $$ \mathbf{0} $$ a null 2-vector.
+Special cases are a pure rotation (when $$ t = 0 $$ )
+and a pure translation (when $$ \mathbf{R} = \mathbf{I} $$).
+A Euclidean transformation is also known as a **displacement**.
+
+A planar Euclidean transformation has three degrees of freedom, 
+one for the rotation and two for the translation. 
+The transformation can be computed from two point correspondences.
+
+Invariants: length (the distance between two points), angle (the angle between two lines), and area.
+
+**Class II: A Similarity transformations** (or more simply a similarity) is an isometry
+composed with an isotropic scaling.
+In the case of a Euclidean transformation composed with a scaling (i.e. no reflection)
+the similarity has matrix representation
+
+$$ \begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix}
+= \begin{bmatrix} s \cos \theta & - s \sin \theta & t_x \\
+                  s \sin \theta &   s \cos \theta & t_y \\
+                  0             &   0        & 1  \end{bmatrix}
+  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} $$
+
+This can be written more concisely in block form as
+
+$$ \mathbf{x'} = \mathbf{H}_S \mathbf{x}
+= \begin{bmatrix} s \mathbf{R} & \mathbf{t} \\ \mathbf{O} ^\intercal & 1 \end{bmatrix} \mathbf{x} $$
+
+where_ the scalar s represents the isotropic scaling.
+A similarity transformation is also known as an **equi-form** transformation,
+because it preserves “shape” (form). A planar similarity transformation has four degrees of freedom,
+the scaling accounting for one more degree of freedom than a Euclidean transformation.
+A similarity can be computed from two point correspondences.
+
+**Invariants** : Angles, parallel, the ratio of two lengths (ratio of areas).
+
+The description **metric structure** implies that the structure is defined up to a similarity.
+
+**Class III: An affine transformation** (or more simply an affinity) is a non-singular linear
+transformation followed by a translation. It has the matrix representation
+
+$$ \begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix} 
+= \begin{bmatrix} a_{11} & a_{12} & t_x \\
+                  a_{21} & a_{22} & t_y \\
+                  0      &   0    & 1  \end{bmatrix}
+  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} $$
+
+or in block form
+
+$$ \mathbf{x'} = \mathbf{H}_A \mathbf{x}
+= \begin{bmatrix} \mathbf{A} & \mathbf{t} \\ \mathbf{O} ^\intercal & 1 \end{bmatrix} \mathbf{x} $$
+
+
+with_  $$ \mathbf{A} $$ a $$ 2 × 2 $$ non-singular matrix.
+A planar affine transformation has six degrees of freedom corresponding to the six matrix elements.
+The transformation can be computed from three point correspondences.
+The affine matrix A can always be decomposed (SVD) as
+
+$$ \mathbf{A}  = \mathbf{U}\mathbf{D}\mathbf{V}^\intercal
+= (\mathbf{U}\mathbf{V}^\intercal )(\mathbf{V}\mathbf{D}\mathbf{V}^\intercal )
+= R(θ) R(−φ) D R(φ) $$
+
+where $$ \mathbf{U} $$ and $$ \mathbf{V} $$ are orthogonal matrices,
+$$ R(θ) $$ and $$ R(φ) $$ are rotations by $$ θ $$ and $$ φ $$ respectively,
+and $$ \mathbf{D} $$ is a diagonal matrix:
+
+$$ \mathbf{D} = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix} $$
+
+The affine matrix $$ \mathbf{A} $$ is hence seen to be the concatenation of a rotation (by $$ φ $$);
+a scaling by $$ λ_1 $$ and $$ λ_2 $$ respectively in the (rotated) $$ x $$ and $$ y $$ directions;
+a rotation back (by $$ −φ $$); and finally another rotation (by $$ θ $$).
+
+**Invariants** :  Parallel lines, Ratio of lengths of parallel line segments, Ratio of areas.
+
+**Class IV: A Projective transformations** was defined in section 2.3.
+It is a general non-singular linear transformation of homogeneous coordinates. Here we examine its block form
+
+$$ \mathbf{x'} = \mathbf{H}_P \mathbf{x}
+= \begin{bmatrix} \mathbf{A} & \mathbf{t} \\ \mathbf{v} ^\intercal & v \end{bmatrix} \mathbf{x} $$
+
+where_ the vector $$ v = (v_1, v_2)^\intercal  $$.
+A projective transformation between two planes can be computed from four point correspondences,
+with no three collinear on either plane.
+
+**Invariants**:  a ratio of ratios or cross ratio of lengths on a line is a projective invariant.
+
+Decomposition of a projective transformation:
+
+$$ \mathbf{H} = \mathbf{H}_S \mathbf{H}_A \mathbf{H}_P
+= \begin{bmatrix} s \mathbf{R} & \mathbf{t} \\ \mathbf{O} ^\intercal & 1 \end{bmatrix}
+ \begin{bmatrix} \mathbf{K} & \mathbf{O} \\ \mathbf{O} ^\intercal & 1 \end{bmatrix}
+ \begin{bmatrix} \mathbf{I} & \mathbf{O} \\ \mathbf{v} ^\intercal & v \end{bmatrix}
+= \begin{bmatrix} \mathbf{A} & \mathbf{t} \\ \mathbf{v} ^\intercal & v \end{bmatrix} $$
+
+with_ $$ \mathbf{A} $$ a non-singular matrix given by 
+$$ \mathbf{A} = s\mathbf{R}\mathbf{K}+\mathbf{t}\mathbf{v}^\intercal  $$,
+and K an upper-triangular matrix normalized as $$ \det \mathbf{K} = 1 $$.
+This decomposition is valid provided $$ v \neq 0 $$, and is unique if $$ s $$ is chosen positive.
+The transformation HP is an **elation**, described in section A7.3(p631).
+
+**The number of functionally independent invariants is equal to, or greater than,
+the number of degrees of freedom of the configuration less the number of degrees of freedom of the transformation.**
+
+![mvgcv-002](https://lh3.googleusercontent.com/i7wRr_OJkUwlwKZviiOLzm_C7ri3Q0aj2FwKbiqxB4xQfKbDfvT_v7BRerTZeSDwOdWhTtbqWHNt-w=w998-h557-no)
