@@ -542,3 +542,191 @@ The transformation HP is an **elation**, described in section A7.3(p631).
 the number of degrees of freedom of the configuration less the number of degrees of freedom of the transformation.**
 
 ![mvgcv-002](https://lh3.googleusercontent.com/i7wRr_OJkUwlwKZviiOLzm_C7ri3Q0aj2FwKbiqxB4xQfKbDfvT_v7BRerTZeSDwOdWhTtbqWHNt-w=w998-h557-no)
+
+### 2.5 The projective geometry of 1D
+
+A projective transformation of a line is represented by a 2 × 2 homogeneous matrix,
+
+$$ \mathbf{\bar{x}} = \mathbf{H}_{2×2} \mathbf{\bar{x}} $$
+
+and_ has $$ 3 $$ degrees of freedom corresponding to the four elements of the matrix less one for overall scaling.
+A projective transformation of a line may be determined from three corresponding points.
+
+The **cross ratio** is the basic projective invariant of $$ \mathbb{P}^1 $$.
+Given $$ 4 $$ points $$ \mathbf{\bar{x}}_i $$ the_ cross ratio is defined as
+
+$$ Cross(\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \mathbf{\bar{x}}_3, \mathbf{\bar{x}}_4) 
+= \frac {|\mathbf{\bar{x}}_1 \mathbf{\bar{x}}_2| |\mathbf{\bar{x}}_3 \mathbf{\bar{x}}_4|} 
+{|\mathbf{\bar{x}}_1 \mathbf{\bar{x}}_3| |\mathbf{\bar{x}}_2 \mathbf{\bar{x}}_4|} $$
+
+### 2.6 Topology of the projective plane
+
+### 2.7 Recovery of affine and metric properties from images
+
+The projective distortion may be removed once the image of l∞ is specified,
+and the affine distortion removed once the image of the circular points is specified.
+Then the only remaining distortion is a similarity.
+
+**The line at infinity, $$ \mathbf{l} _ ∞ $$, is a fixed line under the projective transformation $$ \mathbf{H} $$
+if and only if $$ \mathbf{H} $$ is an affinity.**
+
+**Recovery of affine properties from images.**
+If the imaged line at infinity is the line $$ \mathbf{l} = (l_1, l_2, l_3)^\intercal  $$,
+then provided $$ l_3 = 0 $$ a suitable projective point transformation
+which will map $$ \mathbf{l} $$ back to $$ \mathbf{l} _ ∞ = (0, 0, 1)^\intercal  $$ is
+
+$$ \mathbf{H} = \mathbf{H} _ A \begin{bmatrix} 1 & 0 & 0 \\
+                       0 & 1 & 0 \\
+                       l_1 & l_2 & l_3 \end{bmatrix} $$
+
+sence, $$ \mathbf{H}^{− \intercal} (l_1, l_2, l_3)^\intercal  = (0, 0, 1)^\intercal  = \mathbf{l} _ ∞ $$.
+
+Under any similarity transformation there are two points on \mathbf{l} _ ∞ which are fixed.
+These are the circular points (also called the absolute points) \mathbf{I}, \mathbf{J}, with canonical coordinates
+
+$$ \mathbf{I} = \begin{pmatrix} 1 \\ i \\ 0 \end{pmatrix}  , \mathbf{J} = \begin{pmatrix} 1 \\ -i \\ 0 \end{pmatrix} $$
+
+**The circular points, $$ \mathbf{I} $$, $$ \mathbf{J} $$, are fixed points under
+the projective transformation $$ \mathbf{H} $$ if and only if $$ \mathbf{H} $$ is a similarity.**
+
+The conic dual to the circular points. The conic
+
+$$ \mathbf{C}^∗ _ ∞ = \mathbf{I}\mathbf{J}^\intercal  + \mathbf{J}\mathbf{I}^\intercal  $$
+
+is dual to the circular points.
+**The dual conic $$ C^∗ _ ∞ $$ is fixed under the projective transformation $$ \mathbf{H} $$ if and only if H is a similarity.**
+$$ C^∗ _ ∞ $$ has $$ 4 $$ degrees of freedom. $$ \det C^∗ _ ∞ = 0 $$.
+
+**Angles on the projective plane.**
+For the lines $$ \mathbf{l} = (l_1, l_2, l_3)^\intercal $$ and $$ \mathbf{m} = (m_1, m_2, m_3)^\intercal  $$ with normals
+parallel to $$ (l_1, l_2)^\intercal , (m_1, m_2)^\intercal  $$ respectively, the angle is
+
+$$ \cos \theta = \frac {l_1 m_1 + l_2 m_2}
+{\sqrt{(l_1^2 + l_2^2) (m_1^2 + m_2^2)}} $$
+
+**Once the conic $$ \mathbf{C}^∗ _ ∞ $$ is identified on the projective plane then Euclidean angles may be measured by**
+
+$$ \cos \theta = \frac {\mathbf{l} ^\intercal \mathbf{C}^∗ _ ∞  \mathbf{m}}
+{\sqrt{(\mathbf{l} ^\intercal \mathbf{C}^∗ _ ∞  \mathbf{l})( \mathbf{m} ^\intercal \mathbf{C}^∗ _ ∞  \mathbf{m}) }} $$
+
+**Lines $$ \mathbf{l} $$ and $$ \mathbf{m} $$ are orthogonal if $$ \mathbf{l} ^\intercal \mathbf{C}^∗ _ ∞ \mathbf{m} = 0 $$.**
+
+**Length ratios** may also be measured once $$ \mathbf{C}^∗ _ ∞ $$ is identified.
+From the standard trigonometric sine rule the ratio of lengths $$ d(b, c) : d(a, c) = \sin α : \sin β $$.
+
+**Recovery of metric properties from images.**
+Suppose the circular points are identified in an image,
+and the image is then rectified by a projective transformation $$ \mathbf{H} $$
+that maps the imaged circular points to their canonical position (at $$ (1, ±i, 0)^\intercal  $$) on $$ l _ ∞ $$.
+The transformation between the world plane and the rectified image is then a similarity
+since it is projective and the circular points are fixed.
+**Metric rectification using $$C^∗ _ ∞ $$.**
+
+$$ \mathbf{C}^∗ _ ∞
+= (\mathbf{H} _ P \mathbf{H} _ A \mathbf{H} _ S ) \mathbf{C}^∗ _ ∞ (\mathbf{H} _ P \mathbf{H} _ A \mathbf{H} _ S ) ^\intercal \\
+= (\mathbf{H} _ P \mathbf{H} _ A )(\mathbf{H} _ S \mathbf{C}^∗ _ ∞ \mathbf{H} ^\intercal _ S )(\mathbf{H} ^\intercal _ A \mathbf{H} ^\intercal _ P) \\
+= (\mathbf{H} _ P \mathbf{H} _ A ) \mathbf{C}^∗ _ ∞ (\mathbf{H} ^\intercal _ A \mathbf{H} ^\intercal _ P) \\
+= \begin{bmatrix} \mathbf{K}\mathbf{K} ^\intercal     &    \mathbf{K}\mathbf{K} ^\intercal  \mathbf{v} \\
+\mathbf{v}^\intercal \mathbf{K}\mathbf{K}^\intercal   &    \mathbf{v} ^\intercal  \mathbf{K}\mathbf{K} ^\intercal\mathbf{v} \end{bmatrix} $$
+
+It is clear that the projective ($$ \mathbf{v} $$) and affine ($$ \mathbf{K} $$)
+components are determined directly from the image of $$ C^∗ _ ∞ $$.
+Sence, **once the conic $$ C^∗ _ ∞ $$ is identified on the projective plane
+then projective distortion may be rectified up to a similarity.**
+
+Actually, a suitable rectifying homography
+may be obtaineddirectly from the identified $$ C^∗ _ ∞ $$ in an image using the SVD (section A4.4(p585)):
+writing the SVD of $$ C^∗ _ ∞ $$ then by inspection
+from the equation above the rectifying projectivity is $$ \mathbf{H} = \mathbf{U} $$ up to a similarity.
+
+$$ C^∗ _ ∞ =  \mathbf{U} \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix} \mathbf{U} ^\intercal  $$
+
+$$ C^∗ _ ∞ $$ can be determined linearly from the images of five line pairs which are orthogonal on the world plane.
+
+### 2.8 More properties of conics
+
+We now introduce an important geometric relation between a point, line and conic, which is termed polarity.
+
+![mvgcv-003](https://lh3.googleusercontent.com/lxrSFCalRSXEwengmhYe9Wim4cp-xqVYBDz1Zo1-Y4WKF-GrlDMXUERXUT7sxpkPGIlFnyQ6YGBOmA=w540-h400-no)
+
+The line $$ \mathbf{l} $$ is called the **polar** of $$ \mathbf{x} $$ with respect to $$ \mathbf{C} $$,
+and the point $$ \mathbf{x} $$ is the **pole** of $$ \mathbf{l} $$ with respect to $$ \mathbf{C} $$.
+**The polar line $$ \mathbf{l} = \mathbf{C}\mathbf{x} $$ of the point $$ \mathbf{x} $$
+with respect to a conic $$ \mathbf{C} $$ intersects the conic in two points.
+The two lines tangent to $$ \mathbf{C} $$ at these points intersect at $$ \mathbf{x} $$.
+If the point $$ \mathbf{x} $$ is on $$ \mathbf{C} $$ then the polar is the tangent line to the conic at $$ \mathbf{x} $$.**
+It is evident that the conic induces a map between points and lines of $$ \mathbb{P}^2 $$.
+
+**A correlation is an invertible mapping from points of \mathbb{P}^2 to lines of \mathbb{P}^2.
+It is represented by a $$ 3 × 3 $$ non-singular matrix $$ \mathbf{A} $$ as $$ \mathbf{l} = \mathbf{A}\mathbf{x} $$.**
+
+**Conjugate points**: If the point $$ \mathbf{y} $$ is on the line
+$$ \mathbf{l}  = \mathbf{C}\mathbf{x} $$ then $$ \mathbf{y} ^\intercal \mathbf{l} = \mathbf{y}^\intercal \mathbf{C}\mathbf{x} =  0 $$.
+Any two points $$ \mathbf{x} $$, $$ \mathbf{y} $$ satisfying
+$$ \mathbf{y} ^\intercal \mathbf{C}\mathbf{x} =  0 $$ are conjugate with respect to the conic $$ \mathbf{C} $$.
+If $$ \mathbf{x} $$ is on the polar of $$ \mathbf{y} $$ then $$ \mathbf{y} $$ is on the polar of $$ \mathbf{x} $$.
+
+There is a dual conjugacy relationship for lines:
+two lines $$ \mathbf{l} $$ and $$ \mathbf{m} $$ are conjugate if $$ \mathbf{l}  ^\intercal \mathbf{C}^∗  \mathbf{m} =  0 $$.
+
+**Classification of conics.**
+Projective normal form for a conic:
+Any conic is equivalent under projective transformation to one with a diagonal matrix.
+Let $$ \mathbf{D}  = diag(\epsilon _ 1 d_1, \epsilon _ 2 d_2, \epsilon _ 3 d_3) $$ where $$ i = ±1  $$ or $$0$$ and each $$d_i > 0$$.
+Thus, $$ \mathbf{D} $$ may be written in the form
+
+$$ \mathbf{D}  = diag(s_1, s_2, s_3) ^\intercal   diag(1, 2, 3)  diag(s_1, s_2, s_3) $$
+
+where $$ s_i^2 = d_i $$ . Note that $$ diag(s_1, s_2, s_3)^\intercal  = diag(s_1, s_2, s_3) $$.
+The various types of conics may now be enumerated, and are shown in table belowing:
+
+![mvgcv-004](https://lh3.googleusercontent.com/pELYptqv3zWULl97TGuHQRlgn-sXdNefQbDgjjCFj98rdiZ2QJuYdTYbSEva8grosi32DUG3xzJ1TA=w1021-h463-no)
+
+**Affine classification of conics.**
+In affine geometry the Euclidean classification -- ellipse, parabola and hyperbola --
+is still valid because it depends only on the relation of $$ l _ ∞ $$ to the conic.
+
+![mvgcv-005](https://lh3.googleusercontent.com/iD9PMc2Hx0LUej1iYvUqmjCqNfhv8X2wX45zLJgVEqn1iIr3xdvjvAgAsgv_nnML7-BKXFrCFGW1kw=w1184-h452-no)
+
+### 2.9 Fixed points and lines
+
+The source and destination planes are identified (the same)
+so that the transformation maps points $$ \mathbf{x} $$ to points $$ \mathbf{x} $$ in the same coordinate system.
+The key idea is that an eigenvector corresponds to a fixed point of the transformation,
+since for an eigenvector $$ \mathbf{e} $$ with eigenvalue $$ λ $$,
+
+$$ \mathbf{H}\mathbf{e} = λ\mathbf{e} $$
+
+and $$ \mathbf{e} $$ and $$ λ  \mathbf{e} $$ represent the same point.
+A $$ 3×3 $$ matrix has three eigenvalues and consequently a plane projective transformation has up to three fixed points,
+if the eigenvalues are distinct. A similar development can be given for fixed lines,
+which, since lines transform as (2.6–p36) $$ \mathbf{l} = \mathbf{H}^{− \intercal} \mathbf{l} $$,
+correspond to the eigenvectors of \mathbf{H}^\intercal .
+
+A further specialization concerns repeated eigenvalues.
+Suppose two of the eigenvalues ($$ λ _ 2 $$, $$ λ _ 3 $$ say) are identical,
+and that there are two distinct eigenvectors $$ (e_2, e_3) $$, corresponding to $$ λ _ 2 = λ _ 3 $$.
+Then the line containing the eigenvectors $$ e_2, e_3 $$ will be fixed pointwise.
+
+Another possibility is that $$ λ _ 2 = λ _ 3 $$, but that there is only one corresponding eigenvector.
+In this case, the eigenvector has algebraic dimension equal to two, but geometric dimension equal to one.
+Then there is one fewer fixed point (2 instead of 3).
+
+**A Euclidean matrix.** The two ideal fixed points are the complex conjugate pair of circular points $$ \mathbf{I} $$, $$ \mathbf{J} $$,
+with corresponding eigenvalues $$ \{e^{iθ}, e^{−iθ}\} $$, where $$ θ $$ is the rotation angle.
+The third eigenvector, which has unit eigenvalue, is called the **pole**.
+A special case is that of a pure translation (i.e. where $$ θ $$ = 0).
+Here the eigenvalues are triply degenerate. The line at infinity is fixed pointwise,
+and there is a pencil of fixed lines through the point $$ (t_x, t_y, 0)^\intercal  $$which corresponds to the translation direction.
+Consequently lines parallel to $$ \mathbf{t} $$ are fixed. This is an example of an elation.
+
+**A similarity matrix.** The two ideal fixed points are again the circular points.
+The eigenvalues are $$\{1, se^{iθ}, se^{−iθ}\}$$.
+The action can be understood as a rotation and isotropic scaling by s about the finite fixed point.
+Note that the eigenvalues of the circular points again encode the angle of rotation.
+
+**An affine matrix.** The two ideal fixed points can be real or complex conjugates,
+but the fixed line $$l _ ∞ = (0, 0, 1)^\intercal  $$through these points is real in either case.
+
+
+
