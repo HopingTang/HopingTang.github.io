@@ -385,7 +385,7 @@ It is called a **perspectivity** rather than a full projectivity,
 and may be represented by a transformation with **six degrees of freedom**.
 
 **Transformation of lines.**
-$$ \mathbf{l} ^\intercal \mathbf{x}_i' = \mathbf{l} ^\intercal \mathbf{H}^{−1} \mathbf{H} \mathbf{x}_i = 0 $$.
+$$ \mathbf{l'} ^\intercal \mathbf{x}_i' = \mathbf{l} ^\intercal \mathbf{H}^{−1} \mathbf{H} \mathbf{x}_i = 0 $$.
 Under the point transformation $$ \mathbf{x'} = \mathbf{H} \mathbf{x} $$, a line transforms as
 
 $$ \mathbf{l'} = \mathbf{H}^{−\intercal} \mathbf{l} $$.
@@ -551,6 +551,7 @@ $$ \mathbf{\bar{x}} = \mathbf{H}_{2×2} \mathbf{\bar{x}} $$
 
 and_ has $$ 3 $$ degrees of freedom corresponding to the four elements of the matrix less one for overall scaling.
 A projective transformation of a line may be determined from three corresponding points.
+(HopingTang: 2 corresponding points is enough?)
 
 The **cross ratio** is the basic projective invariant of $$ \mathbb{P}^1 $$.
 Given $$ 4 $$ points $$ \mathbf{\bar{x}}_i $$ the_ cross ratio is defined as
@@ -558,6 +559,9 @@ Given $$ 4 $$ points $$ \mathbf{\bar{x}}_i $$ the_ cross ratio is defined as
 $$ Cross(\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \mathbf{\bar{x}}_3, \mathbf{\bar{x}}_4) 
 = \frac {|\mathbf{\bar{x}}_1 \mathbf{\bar{x}}_2| |\mathbf{\bar{x}}_3 \mathbf{\bar{x}}_4|} 
 {|\mathbf{\bar{x}}_1 \mathbf{\bar{x}}_3| |\mathbf{\bar{x}}_2 \mathbf{\bar{x}}_4|} $$
+
+$$ |\mathbf{\bar{x}} _ i \mathbf{\bar{x}} _ j| 
+= \det \begin{bmatrix} x _ {i1} & x _ {j1} \\ x _ {i2} & x _ {j2}\end{bmatrix}$$
 
 ### 2.6 Topology of the projective plane
 
@@ -572,7 +576,7 @@ if and only if $$ \mathbf{H} $$ is an affinity.**
 
 **Recovery of affine properties from images.**
 If the imaged line at infinity is the line $$ \mathbf{l} = (l_1, l_2, l_3)^\intercal  $$,
-then provided $$ l_3 = 0 $$ a suitable projective point transformation
+then provided $$ l_3 \neq 0 $$ a suitable projective point transformation
 which will map $$ \mathbf{l} $$ back to $$ \mathbf{l} _ ∞ = (0, 0, 1)^\intercal  $$ is
 
 $$ \mathbf{H} = \mathbf{H} _ A \begin{bmatrix} 1 & 0 & 0 \\
@@ -581,8 +585,8 @@ $$ \mathbf{H} = \mathbf{H} _ A \begin{bmatrix} 1 & 0 & 0 \\
 
 sence, $$ \mathbf{H}^{− \intercal} (l_1, l_2, l_3)^\intercal  = (0, 0, 1)^\intercal  = \mathbf{l} _ ∞ $$.
 
-Under any similarity transformation there are two points on \mathbf{l} _ ∞ which are fixed.
-These are the circular points (also called the absolute points) \mathbf{I}, \mathbf{J}, with canonical coordinates
+Under any similarity transformation there are two points on $$ \mathbf{l} _ ∞ $$ which are fixed.
+These are the circular points (also called the absolute points) $$ \mathbf{I} $$,$$ \mathbf{J}$$, with canonical coordinates
 
 $$ \mathbf{I} = \begin{pmatrix} 1 \\ i \\ 0 \end{pmatrix}  , \mathbf{J} = \begin{pmatrix} 1 \\ -i \\ 0 \end{pmatrix} $$
 
@@ -622,7 +626,7 @@ The transformation between the world plane and the rectified image is then a sim
 since it is projective and the circular points are fixed.
 **Metric rectification using $$C^∗ _ ∞ $$.**
 
-$$ \mathbf{C}^∗ _ ∞
+$$ \mathbf{C}^{∗ \prime} _ ∞
 = (\mathbf{H} _ P \mathbf{H} _ A \mathbf{H} _ S ) \mathbf{C}^∗ _ ∞ (\mathbf{H} _ P \mathbf{H} _ A \mathbf{H} _ S ) ^\intercal \\
 = (\mathbf{H} _ P \mathbf{H} _ A )(\mathbf{H} _ S \mathbf{C}^∗ _ ∞ \mathbf{H} ^\intercal _ S )(\mathbf{H} ^\intercal _ A \mathbf{H} ^\intercal _ P) \\
 = (\mathbf{H} _ P \mathbf{H} _ A ) \mathbf{C}^∗ _ ∞ (\mathbf{H} ^\intercal _ A \mathbf{H} ^\intercal _ P) \\
@@ -635,11 +639,11 @@ Sence, **once the conic $$ C^∗ _ ∞ $$ is identified on the projective plane
 then projective distortion may be rectified up to a similarity.**
 
 Actually, a suitable rectifying homography
-may be obtaineddirectly from the identified $$ C^∗ _ ∞ $$ in an image using the SVD (section A4.4(p585)):
-writing the SVD of $$ C^∗ _ ∞ $$ then by inspection
+may be obtaineddirectly from the identified $$ \mathbf{C}^{∗ \prime} _ ∞ $$ in an image using the SVD (section A4.4(p585)):
+writing the SVD of $$ \mathbf{C}^{∗ \prime} _ ∞ $$ then by inspection
 from the equation above the rectifying projectivity is $$ \mathbf{H} = \mathbf{U} $$ up to a similarity.
 
-$$ C^∗ _ ∞ =  \mathbf{U} \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix} \mathbf{U} ^\intercal  $$
+$$ \mathbf{C}^{∗ \prime} _ ∞ =  \mathbf{U} \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix} \mathbf{U} ^\intercal  $$
 
 $$ C^∗ _ ∞ $$ can be determined linearly from the images of five line pairs which are orthogonal on the world plane.
 
@@ -657,7 +661,7 @@ The two lines tangent to $$ \mathbf{C} $$ at these points intersect at $$ \mathb
 If the point $$ \mathbf{x} $$ is on $$ \mathbf{C} $$ then the polar is the tangent line to the conic at $$ \mathbf{x} $$.**
 It is evident that the conic induces a map between points and lines of $$ \mathbb{P}^2 $$.
 
-**A correlation is an invertible mapping from points of \mathbb{P}^2 to lines of \mathbb{P}^2.
+**A correlation is an invertible mapping from points of $$ \mathbb{P}^2 $$ to lines of $$ \mathbb{P}^2 $$.
 It is represented by a $$ 3 × 3 $$ non-singular matrix $$ \mathbf{A} $$ as $$ \mathbf{l} = \mathbf{A}\mathbf{x} $$.**
 
 **Conjugate points**: If the point $$ \mathbf{y} $$ is on the line
